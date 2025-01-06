@@ -1,10 +1,18 @@
+using Catalog.API.Data;
+using Catalog.API.Repositories;
 using Microsoft.OpenApi.Models;
+using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+
+
+
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -13,10 +21,14 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "My API",
+        Title = "Catalog.API",
         Version = "v1"
     });
 });
+
+builder.Services.AddScoped<ICatalogContext, CatalogContext>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
 
 var app = builder.Build();
 
@@ -25,10 +37,11 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
 app.UseSwagger();
 app.UseSwaggerUI(options =>
 {
-    options.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog.API V1");
     options.RoutePrefix = string.Empty; // To serve Swagger UI at root
 });
 app.UseAuthorization();
