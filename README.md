@@ -3,7 +3,7 @@
 
 <br/>
 This repository includes an online store project designed with microservices such as Catalog, 
-Basket, Discount, and Ordering. Each service uses separate databases (MongoDB, Redis, PostgreSQL, 
+Basket, Discount and Ordering. Each service uses separate databases (MongoDB, Redis, PostgreSQL, 
 SQL Server) and communicates with each other via RabbitMQ and gRPC. Additionally, Ocelot API Gateway is used to aggregate the services.
 
 
