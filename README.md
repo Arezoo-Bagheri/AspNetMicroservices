@@ -13,6 +13,6 @@ SQL Server) and communicates with each other via RabbitMQ and gRPC. Additionally
 - **Discount** :  Implemented as a gRPC service with PostgreSQL.
 - **Ordering** : Manages orders with SQL Server.
 - **Communication** : RabbitMQ for event-driven messaging.
-- **Docker Compose** : Using Docker Compose to simultaneously set up all microservices and databases in development and testing environments.
+- **Docker Compose** : Using Docker Compose to set up all microservices and databases simultaneously in development and testing environments.
 
 
