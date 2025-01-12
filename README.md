@@ -8,8 +8,12 @@ SQL Server) and communicates with each other via RabbitMQ and gRPC. Additionally
 
 
 ### Features :
-- **Catalog** : ASP.NET Core Web API with CRUD operations.
-- **Basket** : Uses Redis for caching and storage.
+- **Catalog.API** : This microservice facilitates efficient CRUD operations for product management and integrates MongoDB for data storage. It leverages the Repository Pattern to ensure scalability and maintainability and uses Docker Compose for efficient containerization, enabling streamlined deployment.
+<br/>
+
+- **Basket.API** : This microservice facilitates efficient CRUD operations for shopping basket management. It integrates Redis for high-performance in-memory storage and leverages the Repository Pattern to ensure scalability and maintainability. The service leverages Docker Compose for efficient containerization, enabling streamlined deployment.
+<br/>
+
 - **Discount** :  Implemented as a gRPC service with PostgreSQL.
 - **Ordering** : Manages orders with SQL Server.
 - **Communication** : RabbitMQ for event-driven messaging.
