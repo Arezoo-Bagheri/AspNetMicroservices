@@ -12,6 +12,10 @@ services:
   basketdb:     
       image: redis
 
+  portainer:
+      image: portainer/portainer-ce
+
+
   distributedcache:
       image: redis
 
@@ -24,6 +28,7 @@ services:
 volumes:
   mongo_data:
   redis_data:
+  portainer_data:
 
 
 

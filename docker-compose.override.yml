@@ -17,6 +17,17 @@ services:
       - redis_data:/data
 
 
+  portainer:
+    container_name: portainer
+    restart: always
+    ports:
+      - "8090:8080" 
+      - "9000:9000"
+    volumes:
+     -  /var/run/docker.sock:/var/run/docker.sock
+     -  portainer_data:/data 
+
+
   catalog.api:
     container_name: catalog.api
     environment:
