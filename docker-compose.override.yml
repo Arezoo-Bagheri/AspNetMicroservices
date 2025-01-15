@@ -17,6 +17,32 @@ services:
       - redis_data:/data
 
 
+  discountdb:
+        container_name: discountdb
+        environment: 
+            -  POSTGRES_USER=admin
+            -  POSTGRES_PASSWORD=admin1234
+            -  POSTGRES_DB=DiscountDb
+        restart: always
+        ports:
+            -  "5432:5432"
+
+        volumes:
+            -  postgres_data:/var/lib/postgresql/data/
+      
+
+  pgadmin:
+       container_name: pgadmin
+       environment:
+            -  PGADMIN_DEFAULT_EMAIL=admin@aspnet.com
+            -  PGADMIN_DEFAULT_PASSWORD=admin1234
+       restart: always
+       ports:
+            -  "5050:80"
+       volumes:
+            -  pgadmin_data:/root/.pgadmin          
+
+
   portainer:
     container_name: portainer
     restart: always
@@ -40,7 +66,6 @@ services:
       - "8080:8080"
 
 
-
   basket.api:
     container_name: basket.api
     environment:
@@ -53,4 +78,12 @@ services:
     ports:
       - "8081:8080" 
 
+
+
+  discount.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+    ports:
+      - "8080"
 
