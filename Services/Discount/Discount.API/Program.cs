@@ -1,4 +1,6 @@
+using Discount.API.Data;
 using Discount.API.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddDbContext<DiscountContext>(options =>
+        options.UseSqlite(builder.Configuration.GetConnectionString("Database")));
 
 builder.Services.AddScoped<IDiscountRepository, DiscountRepository>();
 
@@ -23,6 +28,8 @@ builder.Services.AddSwaggerGen(options =>
 
 
 var app = builder.Build();
+app.UseMigration();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
